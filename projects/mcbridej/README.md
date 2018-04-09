@@ -5,4 +5,7 @@ Email: mcbridej@oregonstate.edu
 
 Directory: projects/mcbridej
 -----
-This is my assignment 1 submission! Let me know if there are questions!
+This is my assignment 2 submission! Let me know if there are questions!
+
+The 5 different card functions may be compiled with:
+`make playdom`
