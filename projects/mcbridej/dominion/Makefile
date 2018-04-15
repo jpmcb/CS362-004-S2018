@@ -48,8 +48,8 @@ runtests: testDrawCard
 	cat dominion.c.gcov >> unittestresult.out
 
 
-player: player.c interface.o
-	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
+player: player.c interface.o ${CARD_OBJS}
+	gcc -o player player.c -g  dominion.o rngs.o interface.o ${CARD_OBJS} $(CFLAGS)
 
 all: playdom player 
 
