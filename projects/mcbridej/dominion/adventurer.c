@@ -1,6 +1,6 @@
 /*
 John McBride
-CS 362 - Software engineering II
+CS 362 - Software engineerig II
 
 Description: Implementation of the adventurer card. Takes various parameters
 	from the switch in cardEffect found in dominion.c

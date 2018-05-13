@@ -2,7 +2,7 @@
 * Name : John McBride
 * Date: April 28th 2018
 * Description: These unit tests check the various components of the 
-*       adventurer card
+*       adventurer card 
 ************************/ 
 
 #include "dominion.h"

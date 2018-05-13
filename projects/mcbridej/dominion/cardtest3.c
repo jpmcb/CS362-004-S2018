@@ -2,7 +2,7 @@
 * Name : John McBride
 * Date: April 28th 2018
 * Description: These test check the various components of the
-*       village card function
+*       village card function 
 ************************/ 
 
 #include "dominion.h"

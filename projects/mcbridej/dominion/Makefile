@@ -1,3 +1,7 @@
+# John McBride
+# CS 362 - Software Engineering II
+# Spring 2018
+
 CFLAGS = -Wall -fpic -coverage -lm 
 
 smithy.o: refactored.h smithy.c
@@ -57,7 +61,7 @@ cardtest4: cardtest4.c ${CARD_OBJS} dominion.o unittesting.c unittesting.h
 	gcc -o cardtest4 -g unittesting.c cardtest4.c ${CARD_OBJS} dominion.o rngs.o $(CFLAGS)
 
 # --------
-# Generate unit test outfile
+# Generate unit test outfile 
 # --------
 unittestresults.out:
 	echo "unittest1.c:" >> unittestresults.out
@@ -108,6 +112,43 @@ unittestresults.out:
 	gcov cardtest4.c >> unittestresults.out
 	gcov gardens.c >> unittestresults.out
 
+# -----------
+# Random testing rules
+# -----------
+
+randtest1: randomtestcard1.c ${CARD_OBJS} dominion.o unittesting.c unittesting.h interface.c interface.h
+	gcc -o randtest1 -g unittesting.c randomtestcard1.c interface.c ${CARD_OBJS} dominion.o rngs.o $(CFLAGS)
+
+randtest2: randomtestcard2.c ${CARD_OBJS} dominion.o unittesting.c unittesting.h interface.c interface.h
+	gcc -o randtest2 -g unittesting.c randomtestcard2.c interface.c ${CARD_OBJS} dominion.o rngs.o $(CFLAGS)
+
+randtest3: randomtestcard3.c ${CARD_OBJS} dominion.o unittesting.c unittesting.h interface.c interface.h
+	gcc -o randtest3 -g unittesting.c randomtestcard3.c interface.c ${CARD_OBJS} dominion.o rngs.o $(CFLAGS)
+
+
+# -----------
+# Random automated tests & output files
+# -----------
+
+randtests:
+	echo "randomtestcard1.c:" >> randomtestcard1.out 
+	make randtest1
+	./randtest1 >> randomtestcard1.out 
+	gcov randomtestcard1.c >> randomtestcard1.out 
+	gcov smithy.c >> randomtestcard1.out
+
+	echo "randomtestcard2.c:" >> randomtestcard2.out 
+	make randtest2
+	./randtest2 >> randomtestcard2.out 
+	gcov randomtestcard2.c >> randomtestcard2.out 
+	gcov village.c >> randomtestcard2.out
+
+	echo "randomtestcard3.c:" >> randomtestcard3.out 
+	make randtest3
+	./randtest3 >> randomtestcard3.out 
+	gcov randomtestcard3.c >> randomtestcard3.out 
+	gcov adventurer.c >> randomtestcard3.out
+
 #To run playdom you need to entere: ./playdom <any integer number> like ./playdom 10*/
 testDrawCard: testDrawCard.c dominion.o rngs.o ${CARD_OBJS}
 	gcc  -o testDrawCard -g  testDrawCard.c dominion.o rngs.o ${CARD_OBJS} $(CFLAGS)
@@ -140,3 +181,4 @@ clean:
 	rm -f unittest1 unittest2 unittest3 unittest4
 	rm -f cardtest1 cardtest2 cardtest3 cardtest4
 	rm -f unittestresults.out
+	rm -f randtest1 randtest2 randtest3
